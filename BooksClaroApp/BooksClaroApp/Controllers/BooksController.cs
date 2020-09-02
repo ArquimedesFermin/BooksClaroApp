@@ -9,7 +9,7 @@ using BooksClaroApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace BooksClaroApp.Controllers
 {
@@ -17,11 +17,12 @@ namespace BooksClaroApp.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        // GET: api/<BooksController>
+        
         /// <summary>
-        /// 
+        /// Obtener listado de libros
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de libros</returns>
+        
         [HttpGet]
         [Route("GetBooks")]
         public async Task<IEnumerable<Books>> Get()
@@ -45,11 +46,11 @@ namespace BooksClaroApp.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Obtener libro por el id de identificación
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        // GET api/<BooksController>/5
+        /// <param name="id">El id del libro seleccionado</param>
+        /// <returns>La información del libro seleccionado</returns>
+
         [HttpGet]
         [Route("GetBooks/{id}")]
 
@@ -75,11 +76,11 @@ namespace BooksClaroApp.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Metodo para el registro de los libro
         /// </summary>
-        /// <param name="books"></param>
-        /// <returns></returns>
-        // POST api/<BooksController>
+        /// <param name="books">Objeto de tipo books</param>
+        /// <returns>Http code</returns>
+        
         [HttpPost]
         [Route("PostBooks")]
         public async Task<HttpStatusCode> Post([FromBody] Books books)
@@ -109,16 +110,14 @@ namespace BooksClaroApp.Controllers
 
             return status;
 
-
         }
 
         /// <summary>
-        /// 
+        /// Metodo para la modificación de los registro de los libros
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="books"></param>
-        /// <returns></returns>
-        // PUT api/<BooksController>/5
+        /// <param name="id">El id del libro seleccionado</param>
+        /// <param name="books">Objeto de tipo books</param>
+
         [HttpPut]
         [Route("UpdateBooks/{id}")]
         public async Task<HttpStatusCode> Put(int id, [FromBody] Books booksObject)
@@ -171,8 +170,11 @@ namespace BooksClaroApp.Controllers
             return status;
         }
 
-
-        // DELETE api/<BooksController>/5
+        /// <summary>
+        /// Metodo para eliminar el registro de lo libros
+        /// </summary>
+        /// <param name="id">El id del libro seleccionado</param>
+         
         [HttpDelete]
         [Route("DeleteBooks/{id}")]
         public async Task<HttpStatusCode> Delete(int id)
