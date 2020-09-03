@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using BooksClaroApp.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -13,6 +14,7 @@ using Newtonsoft.Json;
 
 namespace BooksClaroApp.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
@@ -85,6 +87,7 @@ namespace BooksClaroApp.Controllers
         [Route("PostBooks")]
         public async Task<HttpStatusCode> Post([FromBody] Books books)
         {
+
             var status = new HttpStatusCode();
             HttpClient client = new HttpClient();
 
@@ -117,6 +120,7 @@ namespace BooksClaroApp.Controllers
         /// </summary>
         /// <param name="id">El id del libro seleccionado</param>
         /// <param name="books">Objeto de tipo books</param>
+        /// <returns>Http code</returns>
 
         [HttpPut]
         [Route("UpdateBooks/{id}")]
@@ -174,7 +178,8 @@ namespace BooksClaroApp.Controllers
         /// Metodo para eliminar el registro de lo libros
         /// </summary>
         /// <param name="id">El id del libro seleccionado</param>
-         
+        /// <returns>Http code</returns>
+
         [HttpDelete]
         [Route("DeleteBooks/{id}")]
         public async Task<HttpStatusCode> Delete(int id)
